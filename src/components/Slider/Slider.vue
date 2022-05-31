@@ -64,11 +64,10 @@ export default {
   background-color: $main-color;
   text-align: center;
   .slider_wrapper {
-    @include tansform(v-bind(cssVars));
+    @include transformX(v-bind(cssVars));
     display: flex;
     align-items: center;
     width: 100%;
-    height: 80%;
     transition: $main-transition;
   }
 }

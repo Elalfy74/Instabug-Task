@@ -30,7 +30,7 @@ const routes = [
     name: "NotFound",
     component: NotFoundView,
     meta: {
-      title: "NotFound",
+      title: "User Feedback & Bug reporting",
     },
   },
   {

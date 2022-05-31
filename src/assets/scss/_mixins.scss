@@ -18,7 +18,7 @@
   font-size: 1rem;
   cursor: pointer;
 }
-@mixin tansform($value) {
+@mixin transformX($value) {
   transform: translateX($value);
 }
 @mixin centerVPosition {
@@ -27,30 +27,28 @@
 }
 @mixin centerHPosition {
   left: 50%;
-  transform: translateX(-50%);
+  @include transformX(-50%);
 }
 @mixin centerPosition {
   @include centerVPosition;
   @include centerHPosition;
 }
-@mixin halfCircle($width, $hight) {
+@mixin halfCircle($width, $hight, $direction) {
   width: $width;
   height: $hight;
-  border-top-left-radius: $hight;
-  border-top-right-radius: $hight;
+  @if $direction == "top" {
+    border-top-left-radius: $hight;
+    border-top-right-radius: $hight;
+  } @else if $direction == "bottom" {
+    border-bottom-left-radius: $hight;
+    border-bottom-right-radius: $hight;
+  }
 }
-@mixin halfCircle2($width, $hight) {
-  width: $width;
-  height: $hight;
-  border-bottom-left-radius: $hight;
-  border-bottom-right-radius: $hight;
-}
-
 @mixin triangle($dimension, $afterdimension) {
   width: 0;
   height: 0;
   border: $dimension solid;
-  border-color: transparent transparent black;
+  border-color: transparent transparent $dark-grey;
   position: relative;
   &:after {
     content: "";
@@ -97,21 +95,17 @@
   }
 }
 @mixin tree {
-  height: 0;
   width: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 51px solid black;
-  border-radius: 50%;
+  height: 0;
+  border-style: solid;
+  border-width: 0 22px 52px;
+  border-color: transparent transparent $dark-grey;
   position: relative;
-  z-index: 10000000;
-
   &:after {
     content: "";
-    border-left: 24px solid transparent;
-    border-right: 24px solid transparent;
-    border-bottom: 49px solid white;
-    border-radius: 50%;
+    border-style: solid;
+    border-width: 0 21px 50px;
+    border-color: transparent transparent white;
     position: absolute;
     top: 1px;
     @include centerHPosition;
@@ -119,7 +113,7 @@
   & .inside {
     height: 30px;
     width: 2px;
-    bottom: -30px;
+    bottom: -50px;
     background-color: $dark-grey;
     z-index: 10;
     position: relative;
@@ -163,4 +157,80 @@
     border-top: 1px solid $dark-grey;
     border-left: 1px solid $dark-grey;
   }
+}
+
+@mixin road1 {
+  height: 1px;
+  width: 100%;
+  background-color: white;
+  background-image: linear-gradient(
+    to right,
+    $dark-grey 5%,
+    $dark-grey 7%,
+    white 7%,
+    white 9%,
+    $dark-grey 9%,
+    $dark-grey 11%,
+    white 11%,
+    white 17%,
+    $dark-grey 17%,
+    $dark-grey 25%,
+    white 25%,
+    white 27%,
+    $dark-grey 27%,
+    $dark-grey 34%,
+    white 34%,
+    white 49%,
+    $dark-grey 49%,
+    $dark-grey 52%,
+    white 52%,
+    white 62%,
+    $dark-grey 62%,
+    $dark-grey 72%,
+    white 72%,
+    white 80%,
+    $dark-grey 80%,
+    $dark-grey 82%,
+    white 82%,
+    white 86%,
+    $dark-grey 86%
+  );
+}
+
+@mixin road2 {
+  height: 1px;
+  width: 100%;
+  background-color: white;
+  background-image: linear-gradient(
+    to right,
+    white 2%,
+    white 7%,
+    $dark-grey 7%,
+    $dark-grey 9%,
+    white 9%,
+    white 17%,
+    $dark-grey 17%,
+    $dark-grey 27%,
+    white 27%,
+    white 30%,
+    $dark-grey 30%,
+    $dark-grey 40%,
+    white 40%,
+    white 49%,
+    $dark-grey 49%,
+    $dark-grey 54%,
+    white 54%,
+    white 69%,
+    $dark-grey 69%,
+    $dark-grey 73%,
+    white 73%,
+    white 76%,
+    $dark-grey 76%,
+    $dark-grey 86%,
+    white 86%,
+    white 90%,
+    $dark-grey 90%,
+    $dark-grey 93%,
+    white 93%
+  );
 }

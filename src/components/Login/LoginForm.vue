@@ -43,9 +43,7 @@
 </template>
 
 <script>
-import TextInput from "../TextInput.vue";
 export default {
-  components: { TextInput },
   data() {
     return {
       email: {

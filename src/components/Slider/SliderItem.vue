@@ -13,7 +13,6 @@ export default {
 
 <style scoped lang="scss">
 .slide-item {
-  height: 70%;
   min-width: 50vw;
   color: white;
   img {

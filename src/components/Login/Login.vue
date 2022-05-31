@@ -44,7 +44,7 @@ export default {
 .login {
   flex: 1;
   min-width: 50vw;
-  padding: 0px 10px;
+  padding: 0px 20px;
   @include centering;
   flex-direction: column;
   @media ($mobile-max) {
