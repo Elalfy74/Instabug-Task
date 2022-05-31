@@ -1,0 +1,33 @@
+@mixin centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin rounded {
+  border-radius: 4px;
+}
+@mixin circule {
+  border-radius: 50%;
+}
+@mixin btn($pV, $pH) {
+  @include rounded;
+  padding: $pV $pH;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+@mixin tansform($value) {
+  transform: translateX($value);
+}
+@mixin centerVPosition {
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin centerHPosition {
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin centerPosition {
+  @include centerVPosition;
+  @include centerHPosition;
+}

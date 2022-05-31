@@ -1,30 +1,53 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { users } from "./data/users";
 
-nav {
-  padding: 30px;
-}
+export default {
+  data() {
+    return {
+      users: users,
+      loginError: "",
+    };
+  },
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  provide() {
+    const loginError = {};
+    Object.defineProperty(loginError, "info", {
+      enumerable: true,
+      get: () => this.loginError,
+    });
+    return {
+      loginError,
+      onLoggedIn: this.onLoggedIn,
+      onLoggedOut: this.onLoggedOut,
+    };
+  },
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  methods: {
+    onLoggedIn(InputValues) {
+      const user = this.users.find(
+        (user) =>
+          user.email === InputValues.email &&
+          user.password === InputValues.password
+      );
+
+      if (user) {
+        localStorage.setItem("isLoggedIn", true);
+        this.loginError = "";
+        this.$router.push({ name: "Welcome" });
+      } else {
+        this.loginError = "Your email and/or password are incorrect";
+      }
+    },
+
+    onLoggedOut() {
+      localStorage.removeItem("isLoggedIn");
+      this.$router.push({ name: "Login" });
+    },
+  },
+};
+</script>
+<style></style>
