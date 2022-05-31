@@ -10,6 +10,7 @@ export default {
     return {
       users: users,
       loginError: "",
+      passwordPattern: /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{6,}$/,
     };
   },
 
@@ -27,11 +28,21 @@ export default {
   },
 
   methods: {
-    onLoggedIn(InputValues) {
+    onLoggedIn(inputValues) {
+      const emailName = inputValues.email.split("@")[0];
+      const passwordIsValid =
+        this.passwordPattern.test(inputValues.password) &&
+        !inputValues.password.includes(emailName);
+
+      if (!passwordIsValid) {
+        this.loginError = "Your email and/or password are incorrect";
+        return;
+      }
+
       const user = this.users.find(
         (user) =>
-          user.email === InputValues.email &&
-          user.password === InputValues.password
+          user.email === inputValues.email &&
+          user.password === inputValues.password
       );
 
       if (user) {

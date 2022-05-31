@@ -18,19 +18,17 @@ export default {
   text-align: center;
   margin-top: 100px;
   h1 {
-    color: cadetblue;
+    color: $main-color;
     margin-bottom: 30px;
   }
   button {
-    border: none;
-    padding: 15px 20px;
-    background-color: cadetblue;
+    @include btn(15px, 20px);
+    @include rounded;
+    background-color: $main-color;
     color: white;
-    border-radius: 4px;
     font-size: 22px;
-    cursor: pointer;
     &:hover {
-      background-color: rgb(60, 97, 98);
+      background-color: $main-color-alt;
     }
   }
 }

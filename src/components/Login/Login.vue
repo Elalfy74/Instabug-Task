@@ -18,13 +18,8 @@
     </div>
     <div class="companies">
       <p>Trusted by Top Companies</p>
-      <div class="names">
-        <span>LYR</span>
-        <span>BuzzFeeD</span>
-        <span>asana</span>
-        <span>ONEPLUS</span>
-        <span>HouseParty</span>
-      </div>
+
+      <Companies />
     </div>
   </div>
 </template>
@@ -32,12 +27,14 @@
 <script>
 import SocialButtons from "../SocialButtons.vue";
 import LoginForm from "./LoginForm.vue";
+import Companies from "../Companies.vue";
 
 export default {
   name: "Login",
   components: {
     SocialButtons,
     LoginForm,
+    Companies,
   },
   inject: ["loginError"],
 };
@@ -46,9 +43,13 @@ export default {
 <style scoped lang="scss">
 .login {
   flex: 1;
+  min-width: 50vw;
+  padding: 0px 10px;
   @include centering;
-  padding: 0px 30px;
   flex-direction: column;
+  @media ($mobile-max) {
+    padding: 0px 30px;
+  }
   .logo {
     width: 50px;
     height: 50px;
@@ -105,17 +106,13 @@ export default {
   .companies {
     color: $light-grey;
     font-size: 14px;
-    width: 90%;
+    width: 100%;
     @media ($mobile-max) {
       width: 100%;
     }
     p {
       margin: 20px 0px;
       text-align: center;
-    }
-    .names {
-      display: flex;
-      justify-content: space-evenly;
     }
   }
 }

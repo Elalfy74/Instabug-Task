@@ -27,13 +27,13 @@
         name="password"
         id="password"
         autocomplete="password"
-        placeholder="8+ Characters"
+        placeholder="6+ Characters"
         :class="{ error: passwordHasError }"
         v-model="password.value"
         @blur="handlePasswordBlur"
       />
       <p v-if="passwordHasError" class="error-message" id="password-error">
-        Password must be at least 8 characters
+        Password must be 6 characters or more
       </p>
     </div>
     <button type="submit" id="submit" class="submit" :disabled="!formIsValid">
@@ -56,7 +56,6 @@ export default {
       password: {
         value: "",
         isTouched: false,
-        pattern: /"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/,
       },
     };
   },
@@ -87,7 +86,7 @@ export default {
       return !this.emailIsValid && this.email.isTouched;
     },
     passwordIsValid() {
-      return this.password.value.length > 7;
+      return this.password.value.length >= 6;
     },
     passwordHasError() {
       return !this.passwordIsValid && this.password.isTouched;
@@ -136,6 +135,7 @@ export default {
       }
       &:focus {
         border: 1px solid $focus-color;
+        box-shadow: inset 0 0 4px 0 $focus-color;
       }
     }
     .error-message {

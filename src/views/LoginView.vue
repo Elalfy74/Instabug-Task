@@ -1,6 +1,6 @@
 <template>
   <div class="login-view">
-    <Slider class="sliderr" />
+    <Slider v-if="windowWidth > 767" class="sliderr" />
     <Login />
   </div>
 </template>
@@ -15,6 +15,24 @@ export default {
     Slider,
     Login,
   },
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -22,10 +40,9 @@ export default {
   display: flex;
   align-items: center;
   height: 100vh;
-  @media (max-width: 767px) {
-    .sliderr {
-      display: none;
-    }
+  @media ($mobile-max) {
+    padding-top: 40px;
+    align-items: flex-start;
   }
 }
 </style>

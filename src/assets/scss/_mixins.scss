@@ -6,7 +6,9 @@
 @mixin rounded {
   border-radius: 4px;
 }
-@mixin circule {
+@mixin circle($dimension) {
+  width: $dimension;
+  height: $dimension;
   border-radius: 50%;
 }
 @mixin btn($pV, $pH) {
@@ -30,4 +32,135 @@
 @mixin centerPosition {
   @include centerVPosition;
   @include centerHPosition;
+}
+@mixin halfCircle($width, $hight) {
+  width: $width;
+  height: $hight;
+  border-top-left-radius: $hight;
+  border-top-right-radius: $hight;
+}
+@mixin halfCircle2($width, $hight) {
+  width: $width;
+  height: $hight;
+  border-bottom-left-radius: $hight;
+  border-bottom-right-radius: $hight;
+}
+
+@mixin triangle($dimension, $afterdimension) {
+  width: 0;
+  height: 0;
+  border: $dimension solid;
+  border-color: transparent transparent black;
+  position: relative;
+  &:after {
+    content: "";
+    border-style: solid;
+    border-width: 0 $afterdimension $afterdimension;
+    border-color: transparent transparent white;
+    position: absolute;
+    top: 1px;
+    @include centerHPosition;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    border-bottom: $dimension solid $triangle-color;
+    border-right: $dimension solid transparent;
+    z-index: 10;
+  }
+}
+@mixin cloud($scale) {
+  background-color: white;
+  width: 60px;
+  height: 20px;
+  border-radius: 30px;
+  position: relative;
+  transform: scale($scale);
+  &::after {
+    @include circle(20px);
+    content: "";
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+  }
+  &::before {
+    content: "";
+    background-color: white;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: -20px;
+    right: 10px;
+  }
+}
+@mixin tree {
+  height: 0;
+  width: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 51px solid black;
+  border-radius: 50%;
+  position: relative;
+  z-index: 10000000;
+
+  &:after {
+    content: "";
+    border-left: 24px solid transparent;
+    border-right: 24px solid transparent;
+    border-bottom: 49px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    @include centerHPosition;
+  }
+  & .inside {
+    height: 30px;
+    width: 2px;
+    bottom: -30px;
+    background-color: $dark-grey;
+    z-index: 10;
+    position: relative;
+    @include centerHPosition;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 4px;
+      height: 10px;
+      width: 2px;
+      background-color: $dark-grey;
+      transform: rotate(-42deg);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      height: 8px;
+      width: 2px;
+      background-color: $dark-grey;
+      transform: rotate(42deg);
+    }
+  }
+}
+@mixin bird {
+  width: 8px;
+  height: 8px;
+  border-top-right-radius: 100%;
+  border-top: 1px solid $dark-grey;
+  border-right: 1px solid $dark-grey;
+  position: relative;
+  &::before {
+    content: "";
+    left: 100%;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-top-left-radius: 100%;
+    border-top: 1px solid $dark-grey;
+    border-left: 1px solid $dark-grey;
+  }
 }

@@ -30,9 +30,21 @@ export default {
     };
   },
   methods: {
+    changeSlideAutomatically() {
+      setInterval(() => {
+        if (this.current < 2) {
+          this.current = this.current + 1;
+        } else {
+          this.current = 0;
+        }
+      }, 5000);
+    },
     changSlide(value) {
       this.current = value;
     },
+  },
+  mounted() {
+    this.changeSlideAutomatically();
   },
   computed: {
     cssVars() {
@@ -44,10 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+  min-width: 50vw;
   @include centering;
   flex-direction: column;
   height: 100%;
-  width: 50vw;
   overflow: hidden;
   background-color: $main-color;
   text-align: center;
@@ -63,10 +75,8 @@ export default {
 .slider-buttons {
   margin-top: 20px;
   span {
-    @include circule;
+    @include circle(20px);
     display: inline-block;
-    width: 20px;
-    height: 20px;
     border: 2px solid white;
     margin-right: 20px;
     cursor: pointer;

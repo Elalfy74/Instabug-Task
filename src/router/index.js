@@ -26,7 +26,7 @@ const routes = [
     },
   },
   {
-    path: "/not-found",
+    path: "/404",
     name: "NotFound",
     component: NotFoundView,
     meta: {
@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)",
-    redirect: "/not-found",
+    redirect: "/404",
   },
 ];
 
@@ -47,7 +47,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.auth && !localStorage.getItem("isLoggedIn")) {
     next("/login");
-  } else if (!to.meta.auth && localStorage.getItem("isLoggedIn")) {
+  } else if (to.meta.auth === false && localStorage.getItem("isLoggedIn")) {
     next("/welcome");
   } else {
     next();
