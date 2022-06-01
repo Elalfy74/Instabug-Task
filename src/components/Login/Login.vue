@@ -18,7 +18,6 @@
     </div>
     <div class="companies">
       <p>Trusted by Top Companies</p>
-
       <Companies />
     </div>
   </div>

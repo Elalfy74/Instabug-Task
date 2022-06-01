@@ -4,13 +4,13 @@
 
 <script>
 import { users } from "./data/users";
+import { validatePassword } from "./helper/validation";
 
 export default {
   data() {
     return {
       users: users,
       loginError: "",
-      passwordPattern: /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{6,}$/,
     };
   },
 
@@ -31,7 +31,7 @@ export default {
     onLoggedIn(inputValues) {
       const emailName = inputValues.email.split("@")[0];
       const passwordIsValid =
-        this.passwordPattern.test(inputValues.password) &&
+        validatePassword(inputValues.password) &&
         !inputValues.password.includes(emailName);
 
       if (!passwordIsValid) {

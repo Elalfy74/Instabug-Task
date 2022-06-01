@@ -1,6 +1,6 @@
 <template>
   <div class="login-view">
-    <Slider v-if="windowWidth > 767" class="sliderr" />
+    <Slider v-if="windowWidth > 767" />
     <Login />
   </div>
 </template>

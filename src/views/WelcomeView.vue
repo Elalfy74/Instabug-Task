@@ -21,7 +21,6 @@ export default {
 <style scoped lang="scss">
 .welcome {
   padding: 100px 20px 0px;
-  // margin-top: 100px;
   text-align: center;
   h2 {
     color: $main-color;

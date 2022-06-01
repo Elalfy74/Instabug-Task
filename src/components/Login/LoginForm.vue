@@ -43,13 +43,14 @@
 </template>
 
 <script>
+import { validateEmail } from "../../helper/validation";
+
 export default {
   data() {
     return {
       email: {
         value: "",
         isTouched: false,
-        pattern: /[a-zA-Z0-9]+@[a-zA-Z]+\.[a-z]{2,6}/,
       },
       password: {
         value: "",
@@ -78,7 +79,7 @@ export default {
   },
   computed: {
     emailIsValid() {
-      return this.email.pattern.test(this.email.value);
+      return validateEmail(this.email.value);
     },
     emailHasError() {
       return !this.emailIsValid && this.email.isTouched;
