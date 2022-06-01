@@ -125,7 +125,7 @@ export default {
         border-bottom: 90px solid #f1f5f8;
         border-right: 120px solid transparent;
         bottom: 1px;
-        right: 110px;
+        right: 105px;
         z-index: 10000;
       }
       .triangle {
@@ -160,7 +160,7 @@ export default {
       left: 40px;
       z-index: 111;
       .cloud {
-        @include cloud(0.6);
+        @include cloud(0.6, 0);
       }
     }
     .cloud-holder2 {
@@ -169,7 +169,7 @@ export default {
       left: 120px;
       z-index: 111;
       .cloud2 {
-        @include cloud(0.9);
+        @include cloud(0.9, 0.4s);
       }
     }
     .cloud-holder3 {
@@ -177,7 +177,7 @@ export default {
       left: 200px;
       position: absolute;
       .cloud3 {
-        @include cloud(1);
+        @include cloud(1, 0.7s);
       }
     }
     .cloud-holder4 {
@@ -185,7 +185,7 @@ export default {
       right: 40px;
       position: absolute;
       .cloud4 {
-        @include cloud(0.8);
+        @include cloud(0.8, 1s);
       }
     }
     // End Of Clouds

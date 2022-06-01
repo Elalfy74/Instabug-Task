@@ -14,6 +14,7 @@ const routes = [
     component: WelcomeView,
     meta: {
       auth: true,
+      title: "Welcome | Instabug",
     },
   },
   {
@@ -45,9 +46,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.auth && !localStorage.getItem("isLoggedIn")) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (to.meta.auth && !isLoggedIn) {
     next("/login");
-  } else if (to.meta.auth === false && localStorage.getItem("isLoggedIn")) {
+  } else if (to.meta.auth === false && isLoggedIn) {
     next("/welcome");
   } else {
     next();

@@ -17,6 +17,7 @@
   border: none;
   font-size: 1rem;
   cursor: pointer;
+  transition: 0.2s;
 }
 @mixin transformX($value) {
   transform: translateX($value);
@@ -68,13 +69,15 @@
     z-index: 10;
   }
 }
-@mixin cloud($scale) {
+@mixin cloud($scale, $delay) {
   background-color: white;
   width: 60px;
   height: 20px;
   border-radius: 30px;
   position: relative;
   transform: scale($scale);
+  animation: cloud-animation 2s infinite alternate linear;
+  animation-delay: $delay;
   &::after {
     @include circle(20px);
     content: "";
@@ -233,4 +236,13 @@
     $dark-grey 93%,
     white 93%
   );
+}
+
+@keyframes cloud-animation {
+  from {
+    transform: translateX(-5px);
+  }
+  to {
+    transform: translateX(5px);
+  }
 }

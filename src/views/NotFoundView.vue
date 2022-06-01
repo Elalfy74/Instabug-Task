@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Shape from "../components/Shape.vue";
+import Shape from "../components/Shapes/Shape.vue";
 export default {
   components: { Shape },
   methods: {
@@ -36,7 +36,6 @@ export default {
   }
   button {
     @include btn(10px, 15px);
-    @include rounded;
     background-color: $main-color;
     color: white;
     font-size: 22px;

@@ -1,13 +1,18 @@
 <template>
   <div class="welcome">
-    <h1>This is Welcome Page</h1>
+    <h2>Welcome {{ userEmail }}</h2>
     <button @click="onLoggedOut">Logout</button>
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {};
+    return {
+      userEmail: null,
+    };
+  },
+  mounted() {
+    this.userEmail = localStorage.getItem("userEmail");
   },
   inject: ["onLoggedOut"],
 };
@@ -15,9 +20,10 @@ export default {
 
 <style scoped lang="scss">
 .welcome {
+  padding: 100px 20px 0px;
+  // margin-top: 100px;
   text-align: center;
-  margin-top: 100px;
-  h1 {
+  h2 {
     color: $main-color;
     margin-bottom: 30px;
   }

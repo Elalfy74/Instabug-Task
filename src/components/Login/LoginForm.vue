@@ -8,7 +8,7 @@
         name="email"
         id="email"
         autocomplete="email"
-        placeholder="your@company.com"
+        placeholder="you@company.com"
         :class="{ error: emailHasError }"
         v-model="email.value"
         @blur="handleEmailBlur"

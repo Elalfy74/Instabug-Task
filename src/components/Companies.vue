@@ -264,7 +264,6 @@ export default {};
 .companies-names {
   display: flex;
   justify-content: space-between;
-
   svg {
     color: grey;
     width: 80px;

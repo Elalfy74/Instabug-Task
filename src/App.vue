@@ -47,8 +47,9 @@ export default {
 
       if (user) {
         localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("userEmail", inputValues.email);
         this.loginError = "";
-        this.$router.push({ name: "Welcome" });
+        this.$router.push({ name: "Welcome", replace: true });
       } else {
         this.loginError = "Your email and/or password are incorrect";
       }
@@ -56,7 +57,8 @@ export default {
 
     onLoggedOut() {
       localStorage.removeItem("isLoggedIn");
-      this.$router.push({ name: "Login" });
+      localStorage.removeItem("userEmail");
+      this.$router.push({ name: "Login", replace: true });
     },
   },
 };
