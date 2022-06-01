@@ -15,11 +15,13 @@ export default {
   },
 
   provide() {
+    // to make the childern listen to changes
     const loginError = {};
     Object.defineProperty(loginError, "info", {
       enumerable: true,
       get: () => this.loginError,
     });
+
     return {
       loginError,
       onLoggedIn: this.onLoggedIn,
@@ -34,6 +36,7 @@ export default {
         validatePassword(inputValues.password) &&
         !inputValues.password.includes(emailName);
 
+      // check that the password is valid and doesn't contain the email name
       if (!passwordIsValid) {
         this.loginError = "Your email and/or password are incorrect";
         return;
@@ -47,7 +50,7 @@ export default {
 
       if (user) {
         localStorage.setItem("isLoggedIn", true);
-        localStorage.setItem("userEmail", inputValues.email);
+        localStorage.setItem("userEmail", inputValues.email.toLowerCase());
         this.loginError = "";
         this.$router.push({ name: "Welcome", replace: true });
       } else {

@@ -16,8 +16,8 @@
   padding: $pV $pH;
   border: none;
   font-size: 1rem;
-  cursor: pointer;
   transition: 0.2s;
+  cursor: pointer;
 }
 @mixin transformX($value) {
   transform: translateX($value);
@@ -161,7 +161,6 @@
     border-left: 1px solid $dark-grey;
   }
 }
-
 @mixin road1 {
   height: 1px;
   width: 100%;

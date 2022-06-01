@@ -21,6 +21,7 @@ export default {
     };
   },
   mounted() {
+    // tracking the window change
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
     });

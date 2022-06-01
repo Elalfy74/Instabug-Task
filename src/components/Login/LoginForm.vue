@@ -61,10 +61,12 @@ export default {
   inject: ["onLoggedIn"],
   methods: {
     handleEmailBlur() {
+      // validate only when the user type at least 1 character
       if (this.email.value.length > 0) {
         this.email.isTouched = true;
       }
     },
+    // validate only when the user type at least 1 character
     handlePasswordBlur() {
       if (this.password.value.length > 0) {
         this.password.isTouched = true;
@@ -81,12 +83,14 @@ export default {
     emailIsValid() {
       return validateEmail(this.email.value);
     },
+    // the error appears only when the user type Invalid input and leave the field
     emailHasError() {
       return !this.emailIsValid && this.email.isTouched;
     },
     passwordIsValid() {
       return this.password.value.length >= 6;
     },
+    // the error appears only when the user type Invalid input and leave the field
     passwordHasError() {
       return !this.passwordIsValid && this.password.isTouched;
     },

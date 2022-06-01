@@ -47,6 +47,7 @@ export default {
     this.changeSlideAutomatically();
   },
   computed: {
+    // holds the current slide number to pass it to the slider class
     cssVars() {
       return this.current * -50 + "vw";
     },
@@ -70,17 +71,17 @@ export default {
     width: 100%;
     transition: $main-transition;
   }
-}
-.slider-buttons {
-  margin-top: 20px;
-  span {
-    @include circle(20px);
-    display: inline-block;
-    border: 2px solid white;
-    margin-right: 20px;
-    cursor: pointer;
-    &.active {
-      background-color: white;
+  .slider-buttons {
+    margin-top: 20px;
+    span {
+      @include circle(20px);
+      display: inline-block;
+      border: 2px solid white;
+      margin-right: 20px;
+      cursor: pointer;
+      &.active {
+        background-color: white;
+      }
     }
   }
 }

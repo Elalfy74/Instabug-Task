@@ -11,6 +11,7 @@ describe("My First Test", () => {
       "Your email and/or password are incorrect"
     );
   });
+
   it("Enter an email address that exists in the login list and any wrong password", () => {
     cy.visit("/login");
     cy.get("#email").type("mohamed@instabug.com");
@@ -21,6 +22,7 @@ describe("My First Test", () => {
       "Your email and/or password are incorrect"
     );
   });
+
   it("Enter an email address that exists in the login list and the right password", () => {
     cy.visit("/login");
     cy.get("#email").type("mohamed@instabug.com");
@@ -28,6 +30,7 @@ describe("My First Test", () => {
     cy.get("#submit").click();
     cy.url().should("include", "/welcome");
   });
+
   it("Enter not a valid email address 'dddd' and unfocus the textbox", () => {
     cy.visit("/login");
     cy.get("#email").type("dddd");
