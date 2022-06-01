@@ -41,7 +41,7 @@ export default {
 
       const user = this.users.find(
         (user) =>
-          user.email === inputValues.email &&
+          user.email === inputValues.email.toLowerCase() &&
           user.password === inputValues.password
       );
 
